@@ -25,7 +25,7 @@ export declare class Transaction {
     });
     serialize(): Buffer;
     /**
-     * Convert this transaction to a JSON object that api.karlsen.org will accept
+     * Convert this transaction to a JSON object that api.karlsencoin.com will accept
      */
     toApiJSON(): TransactionApiJSON;
 }
