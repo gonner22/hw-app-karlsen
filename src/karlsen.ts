@@ -41,7 +41,7 @@ function serializePath(path) {
     return buf;
 }
 
-class Kaspa {
+class Karlsen {
     /**
      * @type {Transport}
      */
@@ -57,14 +57,14 @@ class Kaspa {
     }
 
     /**
-     * Get Kaspa address (public key) for a BIP32 path.
+     * Get Karlsen address (public key) for a BIP32 path.
      *
      * @param {string} path a BIP32 path
      * @param {boolean} display flag to show display
      * @returns {Buffer} an object with the address field
      *
      * @example
-     * kaspa.getPublicKey("44'/111111'/0'").then(r => r.address)
+     * karlsen.getPublicKey("44'/121337'/0'").then(r => r.address)
      */
     async getPublicKey(path, display: boolean = false): Promise<Buffer> {
         const pathBuffer = pathToBuffer(path);
@@ -77,13 +77,13 @@ class Kaspa {
     }
 
     /**
-     * Sign a Kaspa transaction. Applies the signatures into the input objects
+     * Sign a Karlsen transaction. Applies the signatures into the input objects
      *
      * @param {Transaction} transaction - the Transaction object
      *
      *
      * @example
-     * kaspa.signTransaction(transaction)
+     * karlsen.signTransaction(transaction)
      */
     async signTransaction(transaction: Transaction): Promise<void> {
         const header = transaction.serialize();
@@ -137,7 +137,7 @@ class Kaspa {
      * @returns {Buffer} application config object
      *
      * @example
-     * kaspa.signMessage(message).then(r => r.version)
+     * karlsen.signMessage(message).then(r => r.version)
      */
     async signMessage(message: string, addressType?: 0|1, addressIndex?: number, account?: number) {
         account = account ?? 0x80000000;
@@ -188,7 +188,7 @@ class Kaspa {
      * @returns {Buffer} application config object
      *
      * @example
-     * kaspa.getVersion().then(r => r.version)
+     * karlsen.getVersion().then(r => r.version)
      */
     async getVersion() {
         const [major, minor, patch] = await this.sendToDevice(INS.GET_VERSION, P1_NON_CONFIRM);
@@ -212,4 +212,4 @@ class Kaspa {
     }
 }
 
-export default Kaspa;
+export default Karlsen;

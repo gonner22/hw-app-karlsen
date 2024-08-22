@@ -1,31 +1,31 @@
 /// <reference types="node" />
 import Transport from "@ledgerhq/hw-transport";
 import { Transaction } from "./transaction";
-declare class Kaspa {
+declare class Karlsen {
     /**
      * @type {Transport}
      */
     transport: Transport;
     constructor(transport: Transport);
     /**
-     * Get Kaspa address (public key) for a BIP32 path.
+     * Get Karlsen address (public key) for a BIP32 path.
      *
      * @param {string} path a BIP32 path
      * @param {boolean} display flag to show display
      * @returns {Buffer} an object with the address field
      *
      * @example
-     * kaspa.getPublicKey("44'/111111'/0'").then(r => r.address)
+     * karlsen.getPublicKey("44'/121337'/0'").then(r => r.address)
      */
     getPublicKey(path: any, display?: boolean): Promise<Buffer>;
     /**
-     * Sign a Kaspa transaction. Applies the signatures into the input objects
+     * Sign a Karlsen transaction. Applies the signatures into the input objects
      *
      * @param {Transaction} transaction - the Transaction object
      *
      *
      * @example
-     * kaspa.signTransaction(transaction)
+     * karlsen.signTransaction(transaction)
      */
     signTransaction(transaction: Transaction): Promise<void>;
     /**
@@ -37,7 +37,7 @@ declare class Kaspa {
      * @returns {Buffer} application config object
      *
      * @example
-     * kaspa.signMessage(message).then(r => r.version)
+     * karlsen.signMessage(message).then(r => r.version)
      */
     signMessage(message: string, addressType?: 0 | 1, addressIndex?: number, account?: number): Promise<{
         signature: string;
@@ -49,12 +49,12 @@ declare class Kaspa {
      * @returns {Buffer} application config object
      *
      * @example
-     * kaspa.getVersion().then(r => r.version)
+     * karlsen.getVersion().then(r => r.version)
      */
     getVersion(): Promise<{
         version: string;
     }>;
     sendToDevice(instruction: any, p1: any, payload?: Buffer, p2?: number): Promise<Buffer>;
 }
-export default Kaspa;
-//# sourceMappingURL=kaspa.d.ts.map
+export default Karlsen;
+//# sourceMappingURL=karlsen.d.ts.map

@@ -1,8 +1,8 @@
 <img src="https://user-images.githubusercontent.com/4631227/191834116-59cf590e-25cc-4956-ae5c-812ea464f324.png" height="100" />
 
-## coderofstuff/hw-app-kaspa
+## coderofstuff/hw-app-karlsen
 
-Ledger Hardware Wallet Kaspa JavaScript bindings.
+Ledger Hardware Wallet Karlsen JavaScript bindings.
 
 
 ## API
@@ -11,7 +11,7 @@ Ledger Hardware Wallet Kaspa JavaScript bindings.
 
 #### Table of Contents
 
-*   [Kaspa](#kaspa)
+*   [Karlsen](#karlsen)
     *   [Parameters](#parameters)
     *   [Examples](#examples)
     *   [getPublicKey](#getaddress)
@@ -21,9 +21,9 @@ Ledger Hardware Wallet Kaspa JavaScript bindings.
         *   [Parameters](#parameters-2)
         *   [Examples](#examples-2)
 
-### Kaspa
+### Karlsen
 
-Kaspa API
+Karlsen API
 
 #### Parameters
 
@@ -32,13 +32,13 @@ Kaspa API
 #### Examples
 
 ```javascript
-import Kaspa from "hw-app-kaspa";
-const kaspa = new Kaspa(transport);
+import Karlsen from "hw-app-karlsen";
+const karlsen = new Karlsen(transport);
 ```
 
 #### getPublicKey
 
-Get Kaspa Public Key for a BIP32 path.
+Get Karlsen Public Key for a BIP32 path.
 
 ##### Parameters
 
@@ -48,14 +48,14 @@ Get Kaspa Public Key for a BIP32 path.
 ##### Examples
 
 ```javascript
-kaspa.getPublicKey("44'/111111'/0'")
+karlsen.getPublicKey("44'/121337'/0'")
 ```
 
 Returns **[Promise](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Promise)<[Buffer](https://nodejs.org/api/buffer.html)>** the public key buffer with chain code
 
 #### signTransaction
 
-Sign a Kaspa transaction.
+Sign a Karlsen transaction.
 
 ##### Parameters
 
@@ -64,12 +64,12 @@ Sign a Kaspa transaction.
 ##### Examples
 
 ```typescript
-import Kaspa from 'hw-app-kaspa';
-import { TransactionInput, TransactionOutput, Transaction } from 'hw-app-kaspa';
+import Karlsen from 'hw-app-karlsen';
+import { TransactionInput, TransactionOutput, Transaction } from 'hw-app-karlsen';
 
 ...
 
-const kaspa = new Kaspa(transport);
+const karlsen = new Karlsen(transport);
 
 const txin = new TransactionInput({
     prevTxId: "40b022362f1a303518e2b49f86f87a317c87b514ca0f3d08ad2e7cf49d08cc70",
@@ -99,7 +99,7 @@ const tx = new Transaction({
     outputs: [txout, txoutchange],
 });
 
-kaspa.signTransaction(tx);
+karlsen.signTransaction(tx);
 ```
 
 Updates the transaction by filling in the `signature` property of each `TransactionInput` in the `Transaction` object.

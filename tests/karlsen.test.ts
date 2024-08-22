@@ -2,10 +2,10 @@ import {
     openTransportReplayer,
     RecordStore,
   } from "@ledgerhq/hw-transport-mocker";
-import Kaspa from "../src/kaspa";
+import Karlsen from "../src/karlsen";
 import { TransactionInput, TransactionOutput, Transaction } from "../src/transaction";
 
-describe("kaspa", () => {
+describe("karlsen", () => {
     it("getVersion", async () => {
         const transport = await openTransportReplayer(
             RecordStore.fromString(`
@@ -13,8 +13,8 @@ describe("kaspa", () => {
                   <= 0105069000
               `)
         );
-        const kaspa = new Kaspa(transport);
-        const result = await kaspa.getVersion();
+        const karlsen = new Karlsen(transport);
+        const result = await karlsen.getVersion();
         expect(result).toEqual({
             version: "1.5.6"
         });
@@ -27,8 +27,8 @@ describe("kaspa", () => {
                   <= deadbeef9000
               `)
         );
-        const kaspa = new Kaspa(transport);
-        const publicKey = await kaspa.getPublicKey("44'/111111'/0'/0/0");
+        const karlsen = new Karlsen(transport);
+        const publicKey = await karlsen.getPublicKey("44'/121337'/0'/0/0");
         expect(publicKey.toString("hex")).toEqual("deadbeef");
     });
     
@@ -39,8 +39,8 @@ describe("kaspa", () => {
                   <= deadbeef9000
               `)
         );
-        const kaspa = new Kaspa(transport);
-        const publicKey = await kaspa.getPublicKey("44'/111111'/0'/0/0", false);
+        const karlsen = new Karlsen(transport);
+        const publicKey = await karlsen.getPublicKey("44'/121337'/0'/0/0", false);
         expect(publicKey.toString("hex")).toEqual("deadbeef");
     });
     
@@ -51,8 +51,8 @@ describe("kaspa", () => {
                   <= deadbeef9000
               `)
         );
-        const kaspa = new Kaspa(transport);
-        const publicKey = await kaspa.getPublicKey("44'/111111'/0'/0/0", true);
+        const karlsen = new Karlsen(transport);
+        const publicKey = await karlsen.getPublicKey("44'/121337'/0'/0/0", true);
         expect(publicKey.toString("hex")).toEqual("deadbeef");
     });
 
@@ -67,7 +67,7 @@ describe("kaspa", () => {
                 <= 000040ec4a7f581dc2450ab43b412a67bdfdafa6f98281f854a1508852042e41ef86695ec7f0fa36122193fa201ce783618710d65c85cf94640cb93e965f5158fd84a32000112233445566778899aabbccddeeff00112233445566778899aabbccddeeff9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         const txin = new TransactionInput({
             prevTxId: "40b022362f1a303518e2b49f86f87a317c87b514ca0f3d08ad2e7cf49d08cc70",
@@ -91,7 +91,7 @@ describe("kaspa", () => {
         });
 
         try {
-            await kaspa.signTransaction(tx);
+            await karlsen.signTransaction(tx);
             expect(txin.signature).toEqual("ec4a7f581dc2450ab43b412a67bdfdafa6f98281f854a1508852042e41ef86695ec7f0fa36122193fa201ce783618710d65c85cf94640cb93e965f5158fd84a3");
             expect(txin.sighash).toEqual("00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff");
         } catch (e) {
@@ -115,7 +115,7 @@ describe("kaspa", () => {
                 <= 000140b33f7f581dc2450ab43b412a67bdfdafa6f98281f854a1508852042e41ef86695ec7f0fa36122193fa201ce783618710d65c85cf94640cb93e965f5158fd84a32000112233445566778899aabbccddeeff00112233445566778899aabbccddeeff9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         const txin1 = new TransactionInput({
             prevTxId: "40b022362f1a303518e2b49f86f87a317c87b514ca0f3d08ad2e7cf49d08cc70",
@@ -147,7 +147,7 @@ describe("kaspa", () => {
         });
 
         try {
-            await kaspa.signTransaction(tx);
+            await karlsen.signTransaction(tx);
             expect(txin1.signature).toEqual("ec4a7f581dc2450ab43b412a67bdfdafa6f98281f854a1508852042e41ef86695ec7f0fa36122193fa201ce783618710d65c85cf94640cb93e965f5158fd84a3");
             expect(txin1.sighash).toEqual("00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff");
 
@@ -170,7 +170,7 @@ describe("kaspa", () => {
                 <= 00004100ec4a7f581dc2450ab43b412a67bdfdafa6f98281f854a1508852042e41ef86695ec7f0fa36122193fa201ce783618710d65c85cf94640cb93e965f5158fd84a32000112233445566778899aabbccddeeff00112233445566778899aabbccddeeff9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         const txin = new TransactionInput({
             prevTxId: "40b022362f1a303518e2b49f86f87a317c87b514ca0f3d08ad2e7cf49d08cc70",
@@ -195,7 +195,7 @@ describe("kaspa", () => {
 
         let err: any = null;
         try {
-            await kaspa.signTransaction(tx);
+            await karlsen.signTransaction(tx);
         } catch (e) {
             err = e;
         }
@@ -215,7 +215,7 @@ describe("kaspa", () => {
                 <= 000040ec4a7f581dc2450ab43b412a67bdfdafa6f98281f854a1508852042e41ef86695ec7f0fa36122193fa201ce783618710d65c85cf94640cb93e965f5158fd84a3210000112233445566778899aabbccddeeff00112233445566778899aabbccddeeff9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         const txin = new TransactionInput({
             prevTxId: "40b022362f1a303518e2b49f86f87a317c87b514ca0f3d08ad2e7cf49d08cc70",
@@ -240,7 +240,7 @@ describe("kaspa", () => {
 
         let err: any = null;
         try {
-            await kaspa.signTransaction(tx);
+            await karlsen.signTransaction(tx);
         } catch (e) {
             err = e;
         }
@@ -286,10 +286,10 @@ describe("kaspa", () => {
                 <= 40${expectedSignature}20${expectedMessageHash}9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         try {
-            const { signature, messageHash } = await kaspa.signMessage('Hello Kaspa!', 0, 0);
+            const { signature, messageHash } = await karlsen.signMessage('Hello Karlsen!', 0, 0);
             expect(signature).toEqual(expectedSignature);
             expect(messageHash).toEqual(messageHash);
         } catch (e) {
@@ -307,11 +307,11 @@ describe("kaspa", () => {
                 <= 40${expectedSignature}20${expectedMessageHash}9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         let err: any = null;
         try {
-            const { signature, messageHash } = await kaspa.signMessage('Hello Kaspa!', 0, -1);
+            const { signature, messageHash } = await karlsen.signMessage('Hello Karlsen!', 0, -1);
             expect(signature).toEqual(expectedSignature);
             expect(messageHash).toEqual(messageHash);
         } catch (e) {
@@ -330,11 +330,11 @@ describe("kaspa", () => {
                 <= 40${expectedSignature}20${expectedMessageHash}9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         let err: any = null;
         try {
-            const { signature, messageHash } = await kaspa.signMessage('Hello Kaspa!', 0, 0, 0x80000000 - 1);
+            const { signature, messageHash } = await karlsen.signMessage('Hello Karlsen!', 0, 0, 0x80000000 - 1);
             expect(signature).toEqual(expectedSignature);
             expect(messageHash).toEqual(messageHash);
         } catch (e) {
@@ -345,7 +345,7 @@ describe("kaspa", () => {
 
         err = null;
         try {
-            const { signature, messageHash } = await kaspa.signMessage('Hello Kaspa!', 0, 0, 0xFFFFFFFF + 1);
+            const { signature, messageHash } = await karlsen.signMessage('Hello Karlsen!', 0, 0, 0xFFFFFFFF + 1);
             expect(signature).toEqual(expectedSignature);
             expect(messageHash).toEqual(messageHash);
         } catch (e) {
@@ -364,11 +364,11 @@ describe("kaspa", () => {
                 <= 40${expectedSignature}20${expectedMessageHash}9000
             `)
         );
-        const kaspa = new Kaspa(transport);
+        const karlsen = new Karlsen(transport);
 
         let err: any = null;
         try {
-            const { signature, messageHash } = await kaspa.signMessage('Hello Kaspa!');
+            const { signature, messageHash } = await karlsen.signMessage('Hello Karlsen!');
             expect(signature).toEqual(expectedSignature);
             expect(messageHash).toEqual(messageHash);
         } catch (e) {
@@ -528,7 +528,7 @@ describe("Transaction", () => {
 });
 
 describe("TransactionInput", () => {
-    it("should allow for highest possible kaspa value", () => {
+    it("should allow for highest possible karlsen value", () => {
         let err: any = null;
 
         try {
@@ -609,7 +609,7 @@ describe("TransactionOutput", () => {
         expect(err).not.toBe(null);
     });
 
-    it("should allow for highest possible kaspa value", () => {
+    it("should allow for highest possible karlsen value", () => {
         let err: any = null;
         try {
             const output = new TransactionOutput({

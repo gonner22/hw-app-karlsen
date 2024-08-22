@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -8,8 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const errors_1 = require("@ledgerhq/errors");
+import { StatusCodes } from "@ledgerhq/errors";
 const BIP32Path = require("bip32-path");
 // Get Address
 const P1_NON_CONFIRM = 0x00;
@@ -40,7 +38,7 @@ function serializePath(path) {
     }
     return buf;
 }
-class Kaspa {
+class Karlsen {
     constructor(transport) {
         this.transport = transport;
         this.transport.decorateAppAPIMethods(this, [
@@ -50,14 +48,14 @@ class Kaspa {
         ], "");
     }
     /**
-     * Get Kaspa address (public key) for a BIP32 path.
+     * Get Karlsen address (public key) for a BIP32 path.
      *
      * @param {string} path a BIP32 path
      * @param {boolean} display flag to show display
      * @returns {Buffer} an object with the address field
      *
      * @example
-     * kaspa.getPublicKey("44'/111111'/0'").then(r => r.address)
+     * karlsen.getPublicKey("44'/121337'/0'").then(r => r.address)
      */
     getPublicKey(path_1) {
         return __awaiter(this, arguments, void 0, function* (path, display = false) {
@@ -68,13 +66,13 @@ class Kaspa {
         });
     }
     /**
-     * Sign a Kaspa transaction. Applies the signatures into the input objects
+     * Sign a Karlsen transaction. Applies the signatures into the input objects
      *
      * @param {Transaction} transaction - the Transaction object
      *
      *
      * @example
-     * kaspa.signTransaction(transaction)
+     * karlsen.signTransaction(transaction)
      */
     signTransaction(transaction) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -119,7 +117,7 @@ class Kaspa {
      * @returns {Buffer} application config object
      *
      * @example
-     * kaspa.signMessage(message).then(r => r.version)
+     * karlsen.signMessage(message).then(r => r.version)
      */
     signMessage(message, addressType, addressIndex, account) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -162,7 +160,7 @@ class Kaspa {
      * @returns {Buffer} application config object
      *
      * @example
-     * kaspa.getVersion().then(r => r.version)
+     * karlsen.getVersion().then(r => r.version)
      */
     getVersion() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -172,11 +170,11 @@ class Kaspa {
     }
     sendToDevice(instruction_1, p1_1) {
         return __awaiter(this, arguments, void 0, function* (instruction, p1, payload = Buffer.alloc(0), p2 = P2_LAST) {
-            const acceptStatusList = [errors_1.StatusCodes.OK];
+            const acceptStatusList = [StatusCodes.OK];
             const reply = yield this.transport.send(LEDGER_CLA, instruction, p1, p2, payload, acceptStatusList);
             return reply.subarray(0, reply.length - 2);
         });
     }
 }
-exports.default = Kaspa;
-//# sourceMappingURL=kaspa.js.map
+export default Karlsen;
+//# sourceMappingURL=karlsen.js.map

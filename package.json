@@ -1,5 +1,5 @@
 {
-  "name": "hw-app-kaspa",
+  "name": "hw-app-karlsen",
   "version": "1.2.1",
   "description": "",
   "main": "lib/index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coderofstuff/hw-app-kaspa.git"
+    "url": "git+https://github.com/coderofstuff/hw-app-karlsen.git"
   },
   "keywords": [
     "Ledger"
@@ -20,9 +20,9 @@
   "author": "coderofstuff",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/coderofstuff/hw-app-kaspa/issues"
+    "url": "https://github.com/coderofstuff/hw-app-karlsen/issues"
   },
-  "homepage": "https://github.com/coderofstuff/hw-app-kaspa#readme",
+  "homepage": "https://github.com/coderofstuff/hw-app-karlsen#readme",
   "dependencies": {
     "@ledgerhq/errors": "^6.16.3",
     "@ledgerhq/hw-transport": "^6.30.5",
