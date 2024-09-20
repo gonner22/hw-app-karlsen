@@ -12,17 +12,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coderofstuff/hw-app-karlsen.git"
+    "url": "git+https://github.com/karlsen-network/hw-app-karlsen.git"
   },
   "keywords": [
     "Ledger"
   ],
-  "author": "coderofstuff",
+  "author": "Karlsen Developers",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/coderofstuff/hw-app-karlsen/issues"
+    "url": "https://github.com/karlsen-network/hw-app-karlsen/issues"
   },
-  "homepage": "https://github.com/coderofstuff/hw-app-karlsen#readme",
+  "homepage": "https://github.com/karlsen-network/hw-app-karlsen#readme",
   "dependencies": {
     "@ledgerhq/errors": "^6.16.3",
     "@ledgerhq/hw-transport": "^6.30.5",
