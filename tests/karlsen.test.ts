@@ -23,7 +23,7 @@ describe("karlsen", () => {
     it("getPublicKey without display (implicit)", async () => {
         const transport = await openTransportReplayer(
             RecordStore.fromString(`
-                  => e005000015058000002c8001b207800000000000000000000000
+                  => e005000015058000002c8001d9f9800000000000000000000000
                   <= deadbeef9000
               `)
         );
@@ -35,7 +35,7 @@ describe("karlsen", () => {
     it("getPublicKey without display", async () => {
         const transport = await openTransportReplayer(
             RecordStore.fromString(`
-                  => e005000015058000002c8001b207800000000000000000000000
+                  => e005000015058000002c8001d9f9800000000000000000000000
                   <= deadbeef9000
               `)
         );
@@ -47,7 +47,7 @@ describe("karlsen", () => {
     it("getPublicKey with display", async () => {
         const transport = await openTransportReplayer(
             RecordStore.fromString(`
-                  => e005010015058000002c8001b207800000000000000000000000
+                  => e005010015058000002c8001d9f9800000000000000000000000
                   <= deadbeef9000
               `)
         );
@@ -282,7 +282,7 @@ describe("karlsen", () => {
         const expectedMessageHash = '00112233445566778899aabbccddeeff00112233445566778899aabbccddeeff';
         const transport = await openTransportReplayer(
             RecordStore.fromString(`
-                => e0070000160000000000800000000c48656c6c6f204b6173706121
+                => e0070000180000000000800000000e48656c6c6f204b61726c73656e21
                 <= 40${expectedSignature}20${expectedMessageHash}9000
             `)
         );
